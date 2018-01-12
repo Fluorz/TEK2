@@ -11,9 +11,9 @@ CFLAGS	=	-W -Wno-deprecated-declarations -I./
 
 NAME	=	libmy_malloc.so
 
-SRC	=	malloc.c	\
-		utils.c		\
-		realloc.c	\
+SRC	=	src/malloc.c	\
+		src/utils.c		\
+		src/realloc.c	\
 
 OBJ	=	malloc.o	\
 		utils.o		\
