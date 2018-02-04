@@ -4,4 +4,8 @@ Ils seront rajoutés progressivement en 2018
 
 www.leo-lecherbonnier.com
 
-leo-lecherbonnier@epitech.eu
+leo.lecherbonnier@epitech.eu
+
+www.linkedin.com/in/leo-lecherbonnier
+
+Léo Lecherbonnier
