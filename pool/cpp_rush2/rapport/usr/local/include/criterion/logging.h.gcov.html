@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Test unitaires réalisé - /usr/local/include/criterion/logging.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">usr/local/include/criterion</a> - logging.h<span style="font-size: 80%;"> (source / <a href="logging.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Test unitaires réalisé</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryLo">73.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-01-15 11:20:42</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">57.1 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            :  * The MIT License (MIT)
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  * Copyright © 2015-2016 Franklin &quot;Snaipe&quot; Mathieu &lt;http://snai.pe/&gt;
+<span class="lineNum">       5 </span>            :  *
+<span class="lineNum">       6 </span>            :  * Permission is hereby granted, free of charge, to any person obtaining a copy
+<span class="lineNum">       7 </span>            :  * of this software and associated documentation files (the &quot;Software&quot;), to deal
+<span class="lineNum">       8 </span>            :  * in the Software without restriction, including without limitation the rights
+<span class="lineNum">       9 </span>            :  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+<span class="lineNum">      10 </span>            :  * copies of the Software, and to permit persons to whom the Software is
+<span class="lineNum">      11 </span>            :  * furnished to do so, subject to the following conditions:
+<span class="lineNum">      12 </span>            :  *
+<span class="lineNum">      13 </span>            :  * The above copyright notice and this permission notice shall be included in
+<span class="lineNum">      14 </span>            :  * all copies or substantial portions of the Software.
+<span class="lineNum">      15 </span>            :  *
+<span class="lineNum">      16 </span>            :  * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+<span class="lineNum">      17 </span>            :  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+<span class="lineNum">      18 </span>            :  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+<span class="lineNum">      19 </span>            :  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+<span class="lineNum">      20 </span>            :  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+<span class="lineNum">      21 </span>            :  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+<span class="lineNum">      22 </span>            :  * THE SOFTWARE.
+<span class="lineNum">      23 </span>            :  */
+<span class="lineNum">      24 </span>            : /**
+<span class="lineNum">      25 </span>            :  * @file
+<span class="lineNum">      26 </span>            :  * @brief Logging functions
+<span class="lineNum">      27 </span>            :  *****************************************************************************/
+<span class="lineNum">      28 </span>            : #ifndef CRITERION_LOGGING_H_
+<span class="lineNum">      29 </span>            : #define CRITERION_LOGGING_H_
+<span class="lineNum">      30 </span>            : 
+<span class="lineNum">      31 </span>            : #include &quot;internal/common.h&quot;
+<span class="lineNum">      32 </span>            : #include &quot;internal/ordered-set.h&quot;
+<span class="lineNum">      33 </span>            : #include &quot;internal/deprecation.h&quot;
+<span class="lineNum">      34 </span>            : #include &quot;stats.h&quot;
+<span class="lineNum">      35 </span>            : 
+<span class="lineNum">      36 </span>            : CR_BEGIN_C_API
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : enum criterion_logging_level {
+<span class="lineNum">      39 </span>            :     CRITERION_INFO = 1,
+<span class="lineNum">      40 </span>            :     CRITERION_IMPORTANT,
+<span class="lineNum">      41 </span>            : 
+<span class="lineNum">      42 </span>            :     CRITERION_LOG_LEVEL_QUIET = 1 &lt;&lt; 30,
+<span class="lineNum">      43 </span>            : };
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : enum criterion_severity {
+<span class="lineNum">      46 </span>            :     CR_LOG_INFO,
+<span class="lineNum">      47 </span>            :     CR_LOG_WARNING,
+<span class="lineNum">      48 </span>            :     CR_LOG_ERROR,
+<span class="lineNum">      49 </span>            : };
+<span class="lineNum">      50 </span>            : 
+<span class="lineNum">      51 </span>            : /**
+<span class="lineNum">      52 </span>            :  * Prints a log message
+<span class="lineNum">      53 </span>            :  *
+<span class="lineNum">      54 </span>            :  * One can use this function, but it is more convenient to use the 3 macros.
+<span class="lineNum">      55 </span>            :  *
+<span class="lineNum">      56 </span>            :  * @param[in] severity Severity level of the log message
+<span class="lineNum">      57 </span>            :  * @param[in] msg printf like format string
+<span class="lineNum">      58 </span>            :  * @param[in] ... Additional arguments depending on msg
+<span class="lineNum">      59 </span>            :  *
+<span class="lineNum">      60 </span>            :  *****************************************************************************/
+<span class="lineNum">      61 </span>            : CR_FORMAT(printf, 2, 3)
+<span class="lineNum">      62 </span>            : CR_API void cr_log(enum criterion_severity severity, const char *msg, ...);
+<span class="lineNum">      63 </span>            : 
+<span class="lineNum">      64 </span>            : /**
+<span class="lineNum">      65 </span>            :  * Prints a info message
+<span class="lineNum">      66 </span>            :  *
+<span class="lineNum">      67 </span>            :  * Call: cr_log_info(msg, ...)\n
+<span class="lineNum">      68 </span>            :  * Prints a info message defined by msg and the following optional parameters
+<span class="lineNum">      69 </span>            :  *
+<span class="lineNum">      70 </span>            :  * @param[in] msg printf like format string
+<span class="lineNum">      71 </span>            :  * @param[in] ... Additional arguments depending on msg
+<span class="lineNum">      72 </span>            :  *
+<span class="lineNum">      73 </span>            :  *****************************************************************************/
+<span class="lineNum">      74 </span>            : #define cr_log_info(...)    cr_log(CR_LOG_INFO, __VA_ARGS__)
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            : /**
+<span class="lineNum">      77 </span>            :  * Prints a warning message
+<span class="lineNum">      78 </span>            :  *
+<span class="lineNum">      79 </span>            :  * Call: cr_log_warn(msg, ...)\n
+<span class="lineNum">      80 </span>            :  * Prints a warning message defined by msg and the following optional parameters
+<span class="lineNum">      81 </span>            :  *
+<span class="lineNum">      82 </span>            :  * @param[in] msg printf like format string
+<span class="lineNum">      83 </span>            :  * @param[in] ... Additional arguments depending on msg
+<span class="lineNum">      84 </span>            :  *
+<span class="lineNum">      85 </span>            :  *****************************************************************************/
+<span class="lineNum">      86 </span>            : #define cr_log_warn(...)    cr_log(CR_LOG_WARNING, __VA_ARGS__)
+<span class="lineNum">      87 </span>            : 
+<span class="lineNum">      88 </span>            : /**
+<span class="lineNum">      89 </span>            :  * Prints a error message
+<span class="lineNum">      90 </span>            :  *
+<span class="lineNum">      91 </span>            :  * Call: cr_log_error(msg, ...)\n
+<span class="lineNum">      92 </span>            :  * Prints a error message defined by msg and the following optional parameters
+<span class="lineNum">      93 </span>            :  *
+<span class="lineNum">      94 </span>            :  * @param[in] msg printf like format string
+<span class="lineNum">      95 </span>            :  * @param[in] ... Additional arguments depending on msg
+<span class="lineNum">      96 </span>            :  *
+<span class="lineNum">      97 </span>            :  *****************************************************************************/
+<span class="lineNum">      98 </span>            : #define cr_log_error(...)    cr_log(CR_LOG_ERROR, __VA_ARGS__)
+<span class="lineNum">      99 </span>            : 
+<span class="lineNum">     100 </span>            : struct criterion_logger {
+<span class="lineNum">     101 </span>            :     void (*log_pre_all      )(struct criterion_test_set *set);
+<span class="lineNum">     102 </span>            :     void (*log_pre_suite    )(struct criterion_suite_set *set);
+<span class="lineNum">     103 </span>            :     void (*log_pre_init     )(struct criterion_suite *suite, struct criterion_test *test);
+<span class="lineNum">     104 </span>            :     void (*log_pre_test     )(struct criterion_suite *suite, struct criterion_test *test);
+<span class="lineNum">     105 </span>            :     void (*log_assert       )(struct criterion_assert_stats *stats);
+<span class="lineNum">     106 </span>            :     void (*log_theory_fail  )(struct criterion_theory_stats *stats);
+<span class="lineNum">     107 </span>            :     void (*log_test_timeout )(struct criterion_test_stats *stats);
+<span class="lineNum">     108 </span>            :     void (*log_test_crash   )(struct criterion_test_stats *stats);
+<span class="lineNum">     109 </span>            :     void (*log_test_abort   )(struct criterion_test_stats *stats, const char *msg);
+<span class="lineNum">     110 </span>            :     void (*log_other_crash  )(struct criterion_test_stats *stats);
+<span class="lineNum">     111 </span>            :     void (*log_abnormal_exit)(struct criterion_test_stats *stats);
+<span class="lineNum">     112 </span>            :     void (*log_post_test    )(struct criterion_test_stats *stats);
+<span class="lineNum">     113 </span>            :     void (*log_post_fini    )(struct criterion_test_stats *stats);
+<span class="lineNum">     114 </span>            :     void (*log_post_suite   )(struct criterion_suite_stats *stats);
+<span class="lineNum">     115 </span>            :     void (*log_post_all     )(struct criterion_global_stats *stats);
+<span class="lineNum">     116 </span>            :     void (*log_message      )(enum criterion_severity, const char *msg);
+<span class="lineNum">     117 </span>            : };
+<span class="lineNum">     118 </span>            : 
+<span class="lineNum">     119 </span>            : extern struct criterion_logger normal_logging;
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            : CR_END_C_API
+<span class="lineNum">     122 </span>            : 
+<span class="lineNum">     123 </span>            : #define CR_NORMAL_LOGGING    (&amp;normal_logging)
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span>            : #ifdef __cplusplus
+<span class="lineNum">     126 </span>            : # include &lt;sstream&gt;
+<span class="lineNum">     127 </span>            : 
+<span class="lineNum">     128 </span>            : namespace criterion
+<span class="lineNum">     129 </span>            : { namespace logging
+<span class="lineNum">     130 </span>            :   {
+<a name="131"><span class="lineNum">     131 </span>            :   static void(*const log)(enum criterion_severity, const char *, ...) = cr_log;</a>
+<span class="lineNum">     132 </span>            : 
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         12 :   class streambuf : public std::stringbuf {</span></a>
+<span class="lineNum">     134 </span>            :   public:
+<span class="lineNum">     135 </span><span class="lineCov">         12 :       streambuf(enum criterion_severity severity__)</span>
+<span class="lineNum">     136 </span><span class="lineCov">         12 :           : std::stringbuf(), severity__(severity__)</span>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">         12 :       {}</span></a>
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span><span class="lineNoCov">          0 :       virtual int sync() override</span>
+<span class="lineNum">     140 </span>            :       {
+<span class="lineNum">     141 </span><span class="lineNoCov">          0 :           criterion::logging::log(severity__, &quot;%s&quot;, str().c_str());</span>
+<span class="lineNum">     142 </span><span class="lineNoCov">          0 :           str(std::string());</span>
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 :           return 0;</span>
+<span class="lineNum">     144 </span>            :       }
+<span class="lineNum">     145 </span>            :   private:
+<span class="lineNum">     146 </span>            :       enum criterion_severity severity__;
+<a name="147"><span class="lineNum">     147 </span>            :   };</a>
+<span class="lineNum">     148 </span>            : 
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">         12 :   class stream : public std::ostream {</span></a>
+<span class="lineNum">     150 </span>            :   public:
+<span class="lineNum">     151 </span><span class="lineCov">         12 :       stream(enum criterion_severity severity__)</span>
+<span class="lineNum">     152 </span><span class="lineCov">         12 :           : std::ostream(&amp;buf), buf(severity__)</span>
+<span class="lineNum">     153 </span><span class="lineCov">         12 :       {}</span>
+<span class="lineNum">     154 </span>            :   private:
+<span class="lineNum">     155 </span>            :       streambuf buf;
+<span class="lineNum">     156 </span>            :   };
+<span class="lineNum">     157 </span>            : 
+<span class="lineNum">     158 </span><span class="lineCov">          4 :   static stream info { CR_LOG_INFO };</span>
+<span class="lineNum">     159 </span><span class="lineCov">          4 :   static stream warn { CR_LOG_WARNING };</span>
+<span class="lineNum">     160 </span><span class="lineCov">          4 :   static stream error { CR_LOG_ERROR };</span>
+<span class="lineNum">     161 </span>            :   } }
+<span class="lineNum">     162 </span>            : #endif
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            : /* Deprecated old logging system, schedule removal for 3.0 */
+<span class="lineNum">     165 </span>            : #ifndef CRITERION_NO_COMPAT
+<span class="lineNum">     166 </span>            : 
+<span class="lineNum">     167 </span>            : # define criterion_log(_, ...)           CR_DEPRECATED(&quot;criterion_log is deprecated, please use cr_log instead.&quot;) cr_log_info(__VA_ARGS__)
+<span class="lineNum">     168 </span>            : # define criterion_info(...)             CR_DEPRECATED(&quot;criterion_info is deprecated, please use cr_log_info instead.&quot;) cr_log_info(__VA_ARGS__)
+<span class="lineNum">     169 </span>            : # define criterion_pinfo(_, ...)         CR_DEPRECATED(&quot;criterion_pinfo is deprecated, please use cr_log_info instead.&quot;) cr_log_info(__VA_ARGS__)
+<span class="lineNum">     170 </span>            : # define criterion_important(...)        CR_DEPRECATED(&quot;criterion_important is deprecated, please use cr_log_info instead.&quot;) cr_log_info(__VA_ARGS__)
+<span class="lineNum">     171 </span>            : # define criterion_pimportant(_, ...)    CR_DEPRECATED(&quot;criterion_pimportant is deprecated, please use cr_log_info instead.&quot;) cr_log_info(__VA_ARGS__)
+<span class="lineNum">     172 </span>            : # define criterion_perror(...)           CR_DEPRECATED(&quot;criterion_perror is deprecated, please use cr_log_error instead.&quot;) cr_log_error(__VA_ARGS__)
+<span class="lineNum">     173 </span>            : 
+<span class="lineNum">     174 </span>            : #endif /* !CRITERION_NO_COMPAT */
+<span class="lineNum">     175 </span>            : 
+<span class="lineNum">     176 </span>            : #endif /* !CRITERION_LOGGING_H_ */
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

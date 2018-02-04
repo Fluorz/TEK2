@@ -1,0 +1,491 @@
+#!/bin/bash
+
+#JEN AI MARRE DE VOS SUJETS PAS CLAIRE, CEST JUSTE UNE PERTE DE TEMPS !
+#VOUS MAVEZ DEGOUTER DES SCRIPTS SHELL
+#gerer quand le fichier existe Pas
+#gerer quand la table existe deja
+
+FILE="none"
+OPTION="none"
+COMMAND=0
+REQUEST=0
+
+function usage
+{
+	echo "Usage: ./bdsh [OPTION]... [COMMAND] [REQUEST]"
+	echo "OPTION:"
+	echo "  -h				display usage"
+	echo "  -f FILE			json database file"
+	echo "  -j                json formated output for select command"
+}
+
+function create
+{
+	COMMAND=1
+	for param in "$@"
+	do
+		case "$param" in
+			"database")
+			var=$(grep "{" $FILE)
+			return=$?
+			if [ $return = 0 ]
+			then
+				>&2 echo "Database already exist when create database"
+				exit 1
+			fi
+			echo -e "{\n}" > $FILE ;;
+			"table")
+				shift
+				###Check si la table existe !!
+				var=$(grep "data_$1" $FILE)
+				return=$?
+				if [ $return = 0 ]
+				then
+					>&2 echo "Table already exist when create table"
+					exit 1
+				fi
+				let "line=$(sed -n '$=' $FILE)"
+				#mettre une virgule au dernier tableau d'avant
+				let "to_evaluate = $line - 1"
+				get=$(sed $to_evaluate\!d $FILE)
+				if [ "$get" == "]" ]
+				then
+					sed -i "$to_evaluate s/]/],/" $FILE
+				fi
+			 	sed -i "$line i\"desc_$1\": [\\n]," $FILE
+				remember=$1
+				shift
+				let "nbr = 1"
+				arr=(${@//,/ })
+				let "i = $line + 1"
+				for arg in "${arr[@]}"
+				do
+					if [ $nbr != ${#arr[@]} ]
+					then
+						sed -i "$i i\"$arg\"," $FILE
+					else
+						sed -i "$i i\"$arg\"" $FILE
+					fi
+					let "i = i + 1"
+					let "nbr = nbr + 1"
+				done
+				let "line=$(sed -n '$=' $FILE)"
+			 	sed -i "$line i\"data_$remember\": [\\n]" $FILE
+			 	;;
+		esac
+	done
+}
+
+function insert
+{
+	COMMAND=1
+	let "line=$(grep -n \"data_$1\" $FILE | cut -d : -f 1)"
+	sed -n $line,500p $FILE > .tmp
+	var=$(grep -n -m 1 "]" .tmp | cut -d : -f 1)
+	let "line= $var + $line - 2"
+	line_value=$(grep \"desc_$1\" -A4 $FILE | sed 1d | sed 4d | sed s/\"//g | sed s/\,//g | sed s/\]//g | sed /\^$/d)
+	value=(${line_value//\ /})
+	shift
+	arr=${@}
+	IFS=','
+	let "nbr = 0"
+	let "count = 0"
+	let "line = $line + 1"
+	let "to_evaluate = $line - 1"
+	get=$(sed $to_evaluate\!d $FILE)
+	sed -i "$line i {\\n}" $FILE
+	if [ "$get" == "}" ]
+	then
+		sed -i "$to_evaluate s/}/},/" $FILE
+	fi
+	let "i = $line + 1"
+	let "nbr_arg = 0"
+	for arg in ${value[@]}
+	do
+		let "nbr_arg = nbr_arg + 1"
+	done
+	let "nbr_arg = nbr_arg - 1"
+	for arg in ${value[@]}
+	do
+		if [ $nbr != $nbr_arg ]
+		then
+			sed -i "$i i\"$arg\": \"\"," $FILE
+		else
+			sed -i "$i i\"$arg\": \"\"" $FILE
+		fi
+		let "i = i + 1"
+		let "nbr = nbr + 1"
+	done
+	let "i = $line + 1"
+	for arg in ${arr}
+	do
+		IFS='='
+		array=(${arg})
+		let "a = $count"
+		while [ ${value[$a]} != ${array[0]} ] && [ $a != $nbr_arg ]
+		do
+			let "a = a + 1"
+			let "i = i + 1"
+		done
+		if [ ${value[$a]} == ${array[0]} ]
+		then
+			sed -i "$i s/\"\"/ \"${array[1]}\"/" $FILE
+			if [ $a == $count ]
+			then
+				let "i = i + 1"
+			fi
+			let "count = count + 1"
+		fi
+		IFS=','
+	done
+
+
+}
+
+function describe
+{
+	COMMAND=1
+	let "line=$(grep -n \"desc_$1\" $FILE | cut -d : -f 1)"
+	sed -n $line,500p $FILE > .tmp
+	var=$(grep -n -m 1 "]" .tmp | cut -d : -f 1)
+	var+=p
+	sed -n 1,$var .tmp > .tmp_good
+	cat .tmp_good | sed '1d' | sed s/\"//g | sed s/\,//g | sed s/\ //g |sed '$d'
+}
+
+function select_
+{
+	COMMAND=1
+	data=$1
+	shift
+	IFS=' '
+	value=(${@//\,/ })
+	len=0
+	nbr=0
+	for args in ${value[@]}
+	do
+		let "len = len + 1"
+	done
+	let "len -= 1"
+	order=false
+	if [ ${value[$len]} == "order" ]
+	then
+		#echo "order trouvée"
+		order=true
+		unset value[$(( ${#value[*]} - 1 ))]
+	fi
+	i=0
+	IFS=','
+	#Obtenir sur une string les datas
+	#Couper et stocker la partie de la data en question
+	#Puis effectuer la recherche sur cette partie
+	#Trouver la premiere et derniere ligne
+	#find first line : grep -n "data_user" file.json | sed s/\://g | sed s/"data_user"//g | sed s/\"//g | sed s/\ //g | sed 's/\[//g'
+
+	#cut des lignes : sed -n '7,38p' file.json > test
+	let "line=$(grep -n \"data_$data\" $FILE | cut -d : -f 1)"
+	sed -n $line,500p $FILE > .tmp
+	var=$(grep -n -m 1 "]" .tmp | cut -d : -f 1)
+	var+=p
+	sed -n 1,$var .tmp > .tmp_good
+	FILE=.tmp_good
+	#OPTION -J
+	if [ $OPTION == "j" ]
+	then
+		echo "{"
+		let "line=$(wc -l .tmp_good | sed s/.tmp_good//g)"
+		let "to_evaluate = $line"
+		get=$(sed $to_evaluate\!d $FILE)
+		if [ "$get" == "]," ]
+		then
+			sed -i "$to_evaluate s/],/]/" .tmp_good
+		fi
+		cat .tmp_good
+		echo "}"
+		exit 0
+	fi
+	for args in ${value[@]}
+	do
+		let "cut= ${#args} + 3"
+		# get[$i]=$(grep -n "$args\"" $FILE | sed s/\ //g |sed s/\"//g | sed s/\://g | sed s/\,//g | cut -c$cut-30 | sed '1d')
+		get[$i]=$(grep -n "$args\"" $FILE | sed s/$args//g | cut -d : -f 3 | sed s/\"//g )
+		let "i += 1"
+	done
+	# echo "DATA RECU"
+	# for args in ${get[@]}
+	# do
+	# 	echo $args
+	# done
+	# echo "END"
+	a=0
+	IFS=','
+	a=0
+	x=0
+	num_rows=0
+	num_columns=0
+	#double tableau des datas NE PAS TOUCHER STABLE
+	declare -A table
+	while [ $x != ${#get[@]} ]
+	do
+		num_columns=0
+		IFS=','
+		new_string=$(echo ${get[$x]} | sed "s/^\s*$/>/")
+		IFS=$'\n'
+		new_string=(${new_string})
+		while [ $a != ${#new_string[@]} ]
+		do
+			string=$(echo ${new_string[$a]} | sed "s/^[ \t]*//" | sed "s/>//g")
+			table[$x,$a]=$string
+			let "a += 1"
+			let "num_columns += 1"
+		done
+		a=0
+		let "x += 1"
+		let "num_rows += 1"
+	done
+	x=0
+	let "num_rows -= 1"
+	# echo -e "\033[32m-----Debug----\033[0m"
+	# for ((k=0;k<=num_rows;k++))
+	# do
+	# 	echo "-----$k arguments------"
+	# 	for ((g=0;g<=num_columns;g++))
+	# 	do
+	# 		echo ${table[$k,$g]}
+	# 	done
+	# done
+	# echo -e "\033[32m-----END-----\033[0m"
+	a=0
+	b=0
+	i=0
+	tmp=0
+	#Obteni un tableau max, qui est la len max de chaque data du tableau
+	#Obtenir la len des arguments aussi "lastname,frstname,id" au cas ou il soit plus grand
+	for ((i=0;i<=num_rows;i++))
+	do
+		tmp=${#value[$i]}
+		max[$i]=$tmp
+		for ((j=0;j<=num_columns;j++))
+		do
+			args=${table[$i,$j]}
+			if [ $tmp -lt ${#args} ]
+			then
+				max[$i]=${#args}
+				tmp=${max[$i]}
+			fi
+		done
+	done
+	len_maxT=0
+	for args in ${max[@]}
+	do
+		let "len_maxT += 1"
+	done
+	IFS=$'\n'
+	to_put=0
+	in_put=0
+	#FONCTION METTRE LES ARGUMENTS + SPACE + PIPE SUR UNE STRING
+	#Boucler sur les arguments
+	#Arguments + space + | space + arguments + space | + space + arguments + space
+	index=0
+	bool=0
+	pipe_or_not=0
+	while [ $index != ${#value[@]} ]
+	do
+		args=${value[$index]}
+		let "space=${max[$index]} - ${#args} + 1"
+		if [ $bool != 0 ]
+		then
+			header+="| "
+		fi
+		header+=$args
+		in_put=0
+		let "last = index + 1"
+		if [ $last != ${#value[@]} ]
+		then
+		while [ $in_put != $space ]
+		do
+			header+=' '
+			let "in_put += 1"
+		done
+		fi
+		bool=1
+		let "index += 1"
+	done
+	#Placer le bon nombre de tild, en fonction des max len
+	#pour chaque ligne : max + 2 space + | + premier space
+	#Premier arg sans espace les autres espaces apres |
+	#len_tild pour chaque ligne jusquau | y compris
+	#si le premier mettre un de moins que les autres
+	#Si l'argument ex:"ID" et supérieur a la data
+	bool=0
+	len_tild=0
+	index=1
+	pipe_or_not=0
+	for args in ${max[@]}
+	do
+		if [ $index != $len_maxT ]
+		then
+			pipe_or_not=1
+		else
+			pipe_or_not=0
+		fi
+		if [ $bool == 0 ]
+		then
+			let "len_tild += $args + 2 + $pipe_or_not"
+		else
+			let "len_tild += $args + 2 + $pipe_or_not"
+		fi
+		bool=1
+		let "index += 1"
+	done
+	in_put=0
+	while [ $in_put != $len_tild ]
+	do
+		header[1]+='-'
+		let "in_put += 1"
+	done
+	echo ${header[0]}
+	echo ${header[1]}
+	#CONCTAINER LES STRING DES DATA
+	#BOUCLER while(true)
+	#Boucler inéfiniment sur les lignes
+	#result=ligne[$l,$c]
+	#si $l != 0 pipe + espace debut
+	#avoir le max des colums possibles
+	#tant qu'on a pas atteint la limite de colums while(true)
+	columns=0
+	# let "num_columns += 1"
+	while [ $columns -lt $num_columns ]
+	do
+		bool=0
+		for ((l=0;l<=num_rows;l++))
+		do
+			args=${table[$l,$columns]}
+			let "last = num_rows"
+			let "to_put=${max[$l]} - ${#args} + 1"
+			in_put=0
+			space=""
+			while [ $in_put != $to_put ]
+			do
+				space+=' '
+				let "in_put += 1"
+			done
+			if [ $l == $last ]
+			then
+				space=""
+			fi
+			if [ $bool != 0 ]
+			then
+				empty=""
+				if [ "$args" != "$empty" ] || [ $l != $last ]
+				then
+					result[$columns]+="| "$args$space
+				else
+					result[$columns]+="|"$args$space
+				fi
+			else
+				result[$columns]+=$args$space
+			fi
+			bool=1
+		done
+		let "columns += 1"
+	done
+	#PRINT TABLE
+	i=0
+	while [ $i != $columns ]
+	do
+		echo ${result[$i]}
+		let "i += 1"
+	done
+}
+
+function findEnvBash
+{
+	var=$(env | grep "BDSH_File=")
+	x=$?
+	if [ $x == 0 ]
+	then
+		file=$(env | grep "BDSH_File=" | sed s/BDSH_File=//)
+	else
+		if [ ! -e ".bdshrc" ]
+		then
+			#aucun file possible trouvée
+			exit 1
+		else
+		file=$(cat .bdshrc)
+		fi
+	fi
+	FILE="$file"
+}
+
+function checkFileExist
+{
+	if [ ! -e $FILE ]
+	then
+		touch $FILE
+	fi
+}
+
+function main
+{
+	if [ $1 = "-f" ]
+	then
+		OPTION='f'
+		shift 1
+	else
+		exit 1
+	fi
+	EXT_FICHIER=${1#*.}
+	if [ $EXT_FICHIER != "json" ]
+	then
+		findEnvBash $@
+		if [ $FILE = "none" ]
+		then
+			exit 1
+		fi
+	else
+		FILE=$1
+		shift
+	fi
+	checkFileExist $FILE
+	for param in "$@"
+	do
+		case "$param" in
+			"create")
+			shift 1
+			create $@
+			exit 0
+			;;
+			"insert")
+			shift 1
+			insert $@
+			exit 0
+			;;
+			"describe")
+			shift 1
+			describe $@
+			exit 0
+			;;
+			"select")
+			shift 1
+			select_ $@
+			exit 0
+			;;
+			"-j")
+			shift 1
+			OPTION='j'
+			;;
+			*)
+			>&2 echo "Syntax error in command line (bad arguments, ...)"
+			exit 1
+			;;
+		esac
+	done
+}
+
+if [ $# = 0 ] || [ $1 = "-h" ]
+then
+	usage
+else
+	main $@
+fi

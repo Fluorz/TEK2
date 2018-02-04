@@ -1,0 +1,31 @@
+#!/bin/bash
+
+rm -f file.json
+
+echo -e "\033[32m-----Create database and table----\033[0m"
+./bdsh -f file.json create database
+./bdsh -f file.json create table user id,firstname,lastname
+./bdsh -f file.json create table age id,age
+#
+echo -e "\033[32m-------Insert test-------\033[0m"
+./bdsh -f file.json insert user id=1,firstname=John,lastname=SMITH
+./bdsh -f file.json insert user id=4,firstname=Robert\ John,lastname=WILLIAMS
+./bdsh -f file.json insert user id=2,firstname=Lisa,lastname=SIMPSON
+./bdsh -f file.json insert user id=10,lastname=SMITH
+./bdsh -f file.json insert user firstname=Laura,lastname=SMITH
+./bdsh -f file.json insert user id=9
+./bdsh -f file.json insert age id=1,age=42
+
+echo -e "\033[32m----describe user----\033[0m"
+./bdsh -f file.json describe user
+echo -e "\033[32m----describe age-----\033[0m"
+./bdsh -f file.json describe age
+
+echo -e "\033[32m-----Select test-----\033[0m"
+./bdsh -f file.json select user firstname,lastname
+echo
+./bdsh -f file.json select user firstname,lastname,id
+echo
+./bdsh -f file.json select user lastname,firstname order
+# ./bdsh -f file.json select user firstname,lastname
+#./bdsh -f file.json select user firstname,lastname

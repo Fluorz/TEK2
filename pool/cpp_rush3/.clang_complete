@@ -1,0 +1,12 @@
+-I./src/base/CMD/
+-I./src/base/CPUCore/
+-I./src/base/Maths/
+-I./src/modules/
+-I./src/modules/CPUModule/
+-I./src/modules/MonitorCore/
+-I./src/modules/NetworkModule/
+-I./src/modules/RamModule/
+-I./src/modules/UserModule/
+-I./src/modules/TemperatureModule/
+-I./src/modules/BatteryModule
+-I./src/modules/DiskModule/

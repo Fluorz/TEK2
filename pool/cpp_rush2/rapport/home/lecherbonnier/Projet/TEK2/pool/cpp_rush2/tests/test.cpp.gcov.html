@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - Test unitaires réalisé - /home/lecherbonnier/Projet/TEK2/pool/cpp_rush2/tests/test.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../../../../index.html">top level</a> - <a href="index.html">home/lecherbonnier/Projet/TEK2/pool/cpp_rush2/tests</a> - test.cpp<span style="font-size: 80%;"> (source / <a href="test.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">Test unitaires réalisé</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2018-01-15 11:20:42</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            : ** EPITECH PROJECT, 2018
+<span class="lineNum">       3 </span>            : ** test_criterion
+<span class="lineNum">       4 </span>            : ** File description:
+<span class="lineNum">       5 </span>            : **        unit_test.c
+<span class="lineNum">       6 </span>            : */
+<span class="lineNum">       7 </span>            : 
+<span class="lineNum">       8 </span>            : #include &lt;criterion/redirect.h&gt;
+<span class="lineNum">       9 </span>            : #include &lt;criterion/criterion.h&gt;
+<span class="lineNum">      10 </span>            : #include &lt;fcntl.h&gt;
+<span class="lineNum">      11 </span>            : #include &lt;unistd.h&gt;
+<span class="lineNum">      12 </span>            : #include &quot;PapaXmasElf.hpp&quot;
+<span class="lineNum">      13 </span>            : #include &quot;PapaXmasTable.hpp&quot;
+<a name="14"><span class="lineNum">      14 </span>            : #include &quot;PapaXmasConvoyorBelt.hpp&quot;</a>
+<span class="lineNum">      15 </span>            : 
+<span class="lineNum">      16 </span><span class="lineCov">          1 : void redirect_all_std(void)</span>
+<span class="lineNum">      17 </span>            : {
+<span class="lineNum">      18 </span><span class="lineCov">          1 :         cr_redirect_stdout();</span>
+<span class="lineNum">      19 </span><span class="lineCov">          1 :         cr_redirect_stderr();</span>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      21 </span>            : 
+<span class="lineNum">      22 </span><span class="lineCov">          1 : ITable *createTable()</span>
+<span class="lineNum">      23 </span>            : {
+<span class="lineNum">      24 </span><span class="lineCov">          1 :         return new PapaXmasTable;</span>
+<a name="25"><span class="lineNum">      25 </span>            : }</a>
+<span class="lineNum">      26 </span>            : 
+<span class="lineNum">      27 </span><span class="lineCov">          1 : IConvoyorBelt *createConvoyorTable()</span>
+<span class="lineNum">      28 </span>            : {
+<span class="lineNum">      29 </span><span class="lineCov">          1 :         return new PapaXmasConvoyorBelt;</span>
+<a name="30"><span class="lineNum">      30 </span>            : }</a>
+<span class="lineNum">      31 </span>            : 
+<span class="lineNum">      32 </span><span class="lineCov">          1 : void    to_test()</span>
+<span class="lineNum">      33 </span>            : {
+<span class="lineNum">      34 </span><span class="lineCov">          1 :         ITable *table = createTable();</span>
+<span class="lineNum">      35 </span><span class="lineCov">          1 :         IConvoyorBelt *conBelt = createConvoyorTable();</span>
+<span class="lineNum">      36 </span><span class="lineCov">          1 :         PapaXmasElf *elf = new PapaXmasElf(table, conBelt);</span>
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span><span class="lineCov">          1 :         elf-&gt;sendGift();</span>
+<a name="39"><span class="lineNum">      39 </span><span class="lineCov">          1 : }</span></a>
+<span class="lineNum">      40 </span>            : 
+<span class="lineNum">      41 </span><span class="lineCov">          6 : Test (coco, nom_du_test, .init= redirect_all_std)</span>
+<span class="lineNum">      42 </span>            : {
+<a name="43"><span class="lineNum">      43 </span><span class="lineCov">          1 :         to_test();</span></a>
+<span class="lineNum">      44 </span><span class="lineCov">          1 :         cr_assert_stdout_eq_str(&quot;gra hu\n&quot;);</span>
+<span class="lineNum">      45 </span><span class="lineCov">          6 : }</span>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
