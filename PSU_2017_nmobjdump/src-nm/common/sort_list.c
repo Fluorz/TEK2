@@ -61,7 +61,7 @@ void sort_list(list_t *list)
 		i = 0;
 		didswap = 0;
 		for (i = 0; i < limit; i++) {
-	if (i < limit - 1 && strcmp((*list)->epur, (*list)->next->epur) == 0
+	if (i < limit && strcmp((*list)->epur, (*list)->next->epur) == 0
 	&& strcmp((*list)->name, (*list)->next->name) > 0
 	&& (*list)->next->type != 'T') {
 				swap_elem(list);
