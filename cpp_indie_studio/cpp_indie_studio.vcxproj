@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Component\Game\CInventory.cpp" />
+    <ClCompile Include="src\Component\Game\CKeyMap.cpp" />
+    <ClCompile Include="src\Component\Game\CKeyMapStatic.cpp" />
+    <ClCompile Include="src\Component\Game\CTeam.cpp" />
+    <ClCompile Include="src\Component\Game\CTurn.cpp" />
+    <ClCompile Include="src\Component\Game\CWormList.cpp" />
+    <ClCompile Include="src\Component\Game\CWorms.cpp" />
+    <ClCompile Include="src\Component\Graphical\CMesh.cpp" />
+    <ClCompile Include="src\Component\Graphical\CSceneNode.cpp" />
+    <ClCompile Include="src\Component\Graphical\CSkin.cpp" />
+    <ClCompile Include="src\Component\Irrlicht\irrlichtComponent.cpp" />
+    <ClCompile Include="src\Component\Map\CMap.cpp" />
+    <ClCompile Include="src\Component\Map\CMapCreate.cpp" />
+    <ClCompile Include="src\Component\Map\CMapFill.cpp" />
+    <ClCompile Include="src\Component\Menu\CMenu.cpp" />
+    <ClCompile Include="src\ECS\Component\IMComponent.cpp" />
+    <ClCompile Include="src\ECS\Component\MComponent.cpp" />
+    <ClCompile Include="src\ECS\Entity\MEntity.cpp" />
+    <ClCompile Include="src\ECS\Event\EventStore.cpp" />
+    <ClCompile Include="src\ECS\Event\IMEvent.cpp" />
+    <ClCompile Include="src\ECS\Event\MEvent.cpp" />
+    <ClCompile Include="src\ECS\System\ISystem.cpp" />
+    <ClCompile Include="src\ECS\System\MSystem.cpp" />
+    <ClCompile Include="src\Entity\Menu\EMenu.cpp" />
+    <ClCompile Include="src\Entity\Player\EPlayer.cpp" />
+    <ClCompile Include="src\Entity\Team\ETeam.cpp" />
+    <ClCompile Include="src\Entity\Weapon\EWeapon.cpp" />
+    <ClCompile Include="src\Entity\Worms\EWorms.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\System\Game\SGame.cpp" />
+    <ClCompile Include="src\System\Game\SPosition\SPosition.cpp" />
+    <ClCompile Include="src\System\Game\SRenderGame.cpp" />
+    <ClCompile Include="src\System\IrrlichtEvent\SIrrlichtEvent.cpp" />
+    <ClCompile Include="src\System\Map\MapBackground\SMapBackground.cpp" />
+    <ClCompile Include="src\System\Map\MapCamera\SMapCamera.cpp" />
+    <ClCompile Include="src\System\Map\MapCollision\SMapCollision.cpp" />
+    <ClCompile Include="src\System\Map\MapDestruction\SMapDestruction.cpp" />
+    <ClCompile Include="src\System\Map\MapLight\SMapLight.cpp" />
+    <ClCompile Include="src\System\Menu\MenuCtrl\SMenuCtrl.cpp" />
+    <ClCompile Include="src\System\Menu\MenuCtrl\SRenderMenuCtrl.cpp" />
+    <ClCompile Include="src\System\Menu\MenuNewGame\SMenuNewGame.cpp" />
+    <ClCompile Include="src\System\Menu\MenuNewGame\SRenderMenuNewGame.cpp" />
+    <ClCompile Include="src\System\Menu\MenuSave\SMenuSave.cpp" />
+    <ClCompile Include="src\System\Menu\MenuSave\SRenderMenuSave.cpp" />
+    <ClCompile Include="src\System\Menu\SMenu.cpp" />
+    <ClCompile Include="src\System\Menu\SRenderMenu.cpp" />
+    <ClCompile Include="src\System\Resize\SResize.cpp" />
+    <ClCompile Include="src\System\Scene\SScene.cpp" />
+    <ClCompile Include="src\System\SPhysic\SPhysic.cpp" />
+    <ClCompile Include="src\tool\FontTool.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="src\Component\Game\CColor.hpp" />
+    <ClInclude Include="src\Component\Game\CInventory.hpp" />
+    <ClInclude Include="src\Component\Game\CKeyMap.hpp" />
+    <ClInclude Include="src\Component\Game\CKeyMapStatic.hpp" />
+    <ClInclude Include="src\Component\Game\CLife.hpp" />
+    <ClInclude Include="src\Component\Game\CName.hpp" />
+    <ClInclude Include="src\Component\Game\CTeam.hpp" />
+    <ClInclude Include="src\Component\Game\CTurn.hpp" />
+    <ClInclude Include="src\Component\Game\CWeapon.hpp" />
+    <ClInclude Include="src\Component\Game\CWormList.hpp" />
+    <ClInclude Include="src\Component\Game\CWorms.hpp" />
+    <ClInclude Include="src\Component\Graphical\CMesh.hpp" />
+    <ClInclude Include="src\Component\Graphical\CSceneNode.hpp" />
+    <ClInclude Include="src\Component\Graphical\CSkin.hpp" />
+    <ClInclude Include="src\Component\Id.hpp" />
+    <ClInclude Include="src\Component\Irrlicht\irrlichtComponent.hpp" />
+    <ClInclude Include="src\Component\Map\CMap.hpp" />
+    <ClInclude Include="src\Component\Menu\CMenu.hpp" />
+    <ClInclude Include="src\Component\Physic\CFall.hpp" />
+    <ClInclude Include="src\Component\Physic\CGravity.hpp" />
+    <ClInclude Include="src\Component\Physic\CMovement.hpp" />
+    <ClInclude Include="src\Component\Physic\CPos.hpp" />
+    <ClInclude Include="src\Component\Physic\CSpeed.hpp" />
+    <ClInclude Include="src\ECS\Component\IMComponent.hpp" />
+    <ClInclude Include="src\ECS\Component\MComponent.hpp" />
+    <ClInclude Include="src\ECS\Entity\MEntity.hpp" />
+    <ClInclude Include="src\ECS\Event\EventStore.hpp" />
+    <ClInclude Include="src\ECS\Event\IMEvent.hpp" />
+    <ClInclude Include="src\ECS\Event\MEvent.hpp" />
+    <ClInclude Include="src\ECS\System\ISystem.hpp" />
+    <ClInclude Include="src\ECS\System\MSystem.hpp" />
+    <ClInclude Include="src\Entity\Menu\EMenu.hpp" />
+    <ClInclude Include="src\Entity\Player\EPlayer.hpp" />
+    <ClInclude Include="src\Entity\Team\ETeam.hpp" />
+    <ClInclude Include="src\Entity\Weapon\EWeapon.hpp" />
+    <ClInclude Include="src\Entity\Worms\EWorms.hpp" />
+    <ClInclude Include="src\Events\EGame.hpp" />
+    <ClInclude Include="src\Events\EIrrlicht.hpp" />
+    <ClInclude Include="src\Events\EKeyInput.hpp" />
+    <ClInclude Include="src\Events\EScene.hpp" />
+    <ClInclude Include="src\Events\EvMenu.hpp" />
+    <ClInclude Include="src\map.hpp" />
+    <ClInclude Include="src\System\Game\SGame.hpp" />
+    <ClInclude Include="src\System\Game\SPosition\SPosition.hpp" />
+    <ClInclude Include="src\System\Game\SRenderGame.hpp" />
+    <ClInclude Include="src\System\IrrlichtEvent\SIrrlichtEvent.hpp" />
+    <ClInclude Include="src\System\Map\MapBackground\SMapBackground.hpp" />
+    <ClInclude Include="src\System\Map\MapCamera\SMapCamera.hpp" />
+    <ClInclude Include="src\System\Map\MapCollision\SMapCollision.hpp" />
+    <ClInclude Include="src\System\Map\MapDestruction\SMapDestruction.hpp" />
+    <ClInclude Include="src\System\Map\MapLight\SMapLight.hpp" />
+    <ClInclude Include="src\System\Menu\MenuCtrl\SMenuCtrl.hpp" />
+    <ClInclude Include="src\System\Menu\MenuCtrl\SRenderMenuCtrl.hpp" />
+    <ClInclude Include="src\System\Menu\MenuNewGame\SMenuNewGame.hpp" />
+    <ClInclude Include="src\System\Menu\MenuNewGame\SRenderMenuNewGame.hpp" />
+    <ClInclude Include="src\System\Menu\MenuSave\SMenuSave.hpp" />
+    <ClInclude Include="src\System\Menu\MenuSave\SRenderMenuSave.hpp" />
+    <ClInclude Include="src\System\Menu\SMenu.hpp" />
+    <ClInclude Include="src\System\Menu\SRenderMenu.hpp" />
+    <ClInclude Include="src\System\Resize\SResize.hpp" />
+    <ClInclude Include="src\System\Scene\SScene.hpp" />
+    <ClInclude Include="src\System\SPhysic\SPhysic.hpp" />
+    <ClInclude Include="src\tool\FontTool.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="cpp_indie_studio.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\logo.ico" />
+    <Image Include="..\..\..\..\Pictures\logo.png" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{3C0AB0C6-1ECD-4622-BE35-A9C42B82676F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>cppindiestudio</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Antoine\source\repos\cpp_indie_studio\cpp_indie_studio\irrlicht-1.8.4\include;C:\Users\Antoine\source\repos\cpp_indie_studio\cpp_indie_studio\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Antoine\source\repos\cpp_indie_studio\cpp_indie_studio\irrlicht-1.8.4\lib\Win32-visualstudio;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
