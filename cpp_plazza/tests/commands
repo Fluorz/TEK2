@@ -1,0 +1,4 @@
+tests/test.html PHONE_NUMBER ; tests/company.csv tests/memo.txt EMAIL_ADDRESS
+tests/test.html tests/company.csv tests/file.json tests/memo.txt EMAIL_ADDRESS
+tests/test.html tests/company.csv tests/file.json tests/memo.txt PHONE_NUMBER
+tests/test.html tests/company.csv tests/file.json tests/memo.txt IP_ADDRESS

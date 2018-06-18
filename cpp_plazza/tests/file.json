@@ -1,0 +1,227 @@
+[
+  {
+    "_id": "5ae6cf2e5e4958e7528a9ffe",
+    "index": 0,
+    "guid": "8f5e7c0d-9438-4d57-9480-37e617c76ca1",
+    "isActive": true,
+    "balance": "$2,808.38",
+    "picture": "http://placehold.it/32x32",
+    "age": 29,
+    "eyeColor": "brown",
+    "name": "Coleman Hill",
+    "gender": "male",
+    "company": "GRACKER",
+    "email": "colemanhill@gracker.com",
+    "phone": "+1 (916) 407-3709",
+    "address": "131 Hyman Court, Wheatfields, District Of Columbia, 4825",
+    "about": "Consequat culpa aute aliquip laborum incididunt nisi mollit sunt non mollit cupidatat consequat nulla veniam. Mollit ullamco est ex laborum. Officia reprehenderit cillum nisi exercitation quis proident. Aute ut nulla occaecat officia aute anim laborum consectetur sint id eu enim.\r\n",
+    "registered": "2016-10-27T04:08:28 -02:00",
+    "latitude": 61.518471,
+    "longitude": -58.797252,
+    "tags": [
+      "consectetur",
+      "laborum",
+      "ad",
+      "nulla",
+      "dolore",
+      "aliqua",
+      "veniam"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Woodard Dillard"
+      },
+      {
+        "id": 1,
+        "name": "Nash Harrington"
+      },
+      {
+        "id": 2,
+        "name": "Boyle Mcclain"
+      }
+    ],
+    "greeting": "Hello, Coleman Hill! You have 1 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "5ae6cf2e5f6bdf9cbcc72ec6",
+    "index": 1,
+    "guid": "b54bea8e-496d-40cb-b056-113a8d570158",
+    "isActive": true,
+    "balance": "$2,653.48",
+    "picture": "http://placehold.it/32x32",
+    "age": 34,
+    "eyeColor": "green",
+    "name": "Shirley Roth",
+    "gender": "female",
+    "company": "OPTYK",
+    "email": "shirleyroth@optyk.com",
+    "phone": "+1 (811) 400-3837",
+    "address": "500 Debevoise Street, Glasgow, Minnesota, 2807",
+    "about": "Eu sint irure consequat dolor. Pariatur duis id est elit Lorem sit do esse. Culpa eu deserunt magna dolore nulla occaecat cillum duis officia velit amet aliquip. Laboris labore cupidatat aliqua ea minim ex ex ipsum ipsum sit exercitation sit sunt. Ullamco elit Lorem minim minim ex tempor nostrud et adipisicing sit. Enim aliquip culpa in nulla aute laboris aute exercitation.\r\n",
+    "registered": "2017-03-24T12:53:42 -01:00",
+    "latitude": 5.762978,
+    "longitude": -112.443546,
+    "tags": [
+      "voluptate",
+      "aute",
+      "voluptate",
+      "laboris",
+      "occaecat",
+      "duis",
+      "laboris"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Spencer Graham"
+      },
+      {
+        "id": 1,
+        "name": "Mcdonald Jarvis"
+      },
+      {
+        "id": 2,
+        "name": "Ivy Zimmerman"
+      }
+    ],
+    "greeting": "Hello, Shirley Roth! You have 8 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "5ae6cf2e802a6c13f386a172",
+    "index": 2,
+    "guid": "a4ef6a85-853e-4b14-87b7-216eb90e873f",
+    "isActive": true,
+    "balance": "$1,176.30",
+    "picture": "http://placehold.it/32x32",
+    "age": 25,
+    "eyeColor": "blue",
+    "name": "Jordan Cleveland",
+    "gender": "female",
+    "company": "KATAKANA",
+    "email": "jordancleveland@katakana.com",
+    "phone": "+1 (841) 567-3283",
+    "address": "747 Kingsland Avenue, Independence, Alabama, 3530",
+    "about": "Elit ea dolor aliqua enim amet duis. Exercitation commodo laboris laboris aute excepteur qui sunt minim esse ex ex dolor non commodo. Do elit magna eu mollit.\r\n",
+    "registered": "2017-06-27T11:58:10 -02:00",
+    "latitude": 13.618463,
+    "longitude": -131.918771,
+    "tags": [
+      "non",
+      "qui",
+      "incididunt",
+      "sunt",
+      "culpa",
+      "consectetur",
+      "sint"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Dawson Conway"
+      },
+      {
+        "id": 1,
+        "name": "Becky Barrett"
+      },
+      {
+        "id": 2,
+        "name": "Kidd Taylor"
+      }
+    ],
+    "greeting": "Hello, Jordan Cleveland! You have 10 unread messages.",
+    "favoriteFruit": "apple"
+  },
+  {
+    "_id": "5ae6cf2ed0ce1632356e5027",
+    "index": 3,
+    "guid": "301f7370-faa9-4e12-9949-29a7549522b6",
+    "isActive": false,
+    "balance": "$2,484.61",
+    "picture": "http://placehold.it/32x32",
+    "age": 40,
+    "eyeColor": "brown",
+    "name": "Nina Forbes",
+    "gender": "female",
+    "company": "SLAX",
+    "email": "ninaforbes@slax.com",
+    "phone": "+1 (978) 415-2819",
+    "address": "192 Stryker Court, Detroit, Virginia, 4532",
+    "about": "Labore aliqua laborum in eu amet incididunt et occaecat cillum minim ipsum qui do cillum. Dolor dolor dolore reprehenderit nulla aute non veniam pariatur nostrud enim tempor ullamco pariatur. Laborum labore cupidatat esse qui id incididunt dolore cupidatat esse qui.\r\n",
+    "registered": "2016-10-02T04:50:56 -02:00",
+    "latitude": -19.8923,
+    "longitude": 154.504823,
+    "tags": [
+      "mollit",
+      "occaecat",
+      "laborum",
+      "velit",
+      "et",
+      "Lorem",
+      "nisi"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Wise Valencia"
+      },
+      {
+        "id": 1,
+        "name": "Stanton Lamb"
+      },
+      {
+        "id": 2,
+        "name": "Norma Rivas"
+      }
+    ],
+    "greeting": "Hello, Nina Forbes! You have 6 unread messages.",
+    "favoriteFruit": "strawberry"
+  },
+  {
+    "_id": "5ae6cf2ed99c8c72223aad1e",
+    "index": 4,
+    "guid": "5f02dc6b-71f3-4d52-a4f0-62e9c61bd9f5",
+    "isActive": false,
+    "balance": "$1,885.39",
+    "picture": "http://placehold.it/32x32",
+    "age": 23,
+    "eyeColor": "brown",
+    "name": "Nancy Cross",
+    "gender": "female",
+    "company": "BISBA",
+    "email": "nancycross@bisba.com",
+    "phone": "+1 (998) 595-2408",
+    "address": "772 Terrace Place, Weogufka, Washington, 9679",
+    "about": "Velit ut velit ut excepteur in. Labore labore laborum do proident id proident magna commodo elit deserunt commodo. Non laborum exercitation ipsum aliqua aliqua esse incididunt nostrud nisi Lorem duis sint cillum. Irure reprehenderit pariatur dolor anim nostrud ipsum exercitation incididunt laboris dolore ea et proident.\r\n",
+    "registered": "2014-10-08T10:43:31 -02:00",
+    "latitude": 81.911647,
+    "longitude": 108.728344,
+    "tags": [
+      "anim",
+      "laborum",
+      "elit",
+      "enim",
+      "eiusmod",
+      "tempor",
+      "velit"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Wells Fleming"
+      },
+      {
+        "id": 1,
+        "name": "Palmer Mckay"
+      },
+      {
+        "id": 2,
+        "name": "Gertrude Boyle"
+      }
+    ],
+    "greeting": "Hello, Nancy Cross! You have 10 unread messages.",
+    "favoriteFruit": "strawberry"
+  }
+]
