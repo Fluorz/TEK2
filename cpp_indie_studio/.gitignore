@@ -2,3 +2,7 @@
 *.d
 Debug/*
 bomberman
+.idea
+.vs
+.vscode
+bomberman
