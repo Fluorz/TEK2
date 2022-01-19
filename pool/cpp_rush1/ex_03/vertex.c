@@ -93,4 +93,4 @@ static Object *Vertex_sub(const Object *self, const Object *other)
 		self_point->z - other_point->z));
 }
 
-Class *Vertex = (Class *)&_desc;
+Class *Vertex = (Class *)&_desc
